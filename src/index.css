@@ -11,3 +11,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+  .id  {
+    width: 5%;
+  }
+
+  .nmb {
+    color: red;
+    padding: 0 30px 0 30px;
+  }
+
+
+
+  .name {
+    width: 25%;
+  }
+
+  .last {
+    padding: 0 60px 0 60px;
+  }
+
+  .email {
+    width: 20%;
+  }
+
+  .gmail {
+    padding: 0 100px 0 200px;
+  }
+
+  .body {
+    width: 45%;
+  }
+
+  .info{
+    padding: 0 200px 0 400px;
+  }
+
+  .pagination {
+    display: inline-block;
+  }
+
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .pagination a:hover:not(.active) {background-color: #ddd;}
