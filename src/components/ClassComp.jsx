@@ -12,7 +12,8 @@ export default class ClassComp extends Component {
     this.state = {
       api: [],
       page: 1,
-
+      from: 0,
+      to:10
     }
   }
 
@@ -25,6 +26,10 @@ export default class ClassComp extends Component {
           api: mal
         })
       })
+  }
+
+  nextPage(current){
+    this.setState({to:current+ '0',from:current-1 + '0',page:current})
   }
 
   render() {
@@ -42,28 +47,24 @@ export default class ClassComp extends Component {
           </tr>
         </table> <hr />
         {
-          this.state.api.map(obj => {
-            /*  return <Item id={obj.id} name={obj.name} email={obj.email} body={obj.body}/> */
-
-
-            if (this.state.page=2) {
-              return <Item  email={obj.email} body={obj.body} />
-            } else {
-              return <Item id={obj.id} name={obj.name} email={obj.email} body={obj.body} />
-            }
+          this.state.api.slice(this.state.from,this.state.to).map(obj => {
+             return <Item id={obj.id} name={obj.name} email={obj.email} body={obj.body}/>
 
 
           })
         }
 
         <div className="pagination">
-          <a href="1">&laquo;</a>
+          <button disabled={this.state.page <= 1?true:false } onClick={() => this.nextPage(this.state.page -1)}>&laquo;</button>
           {
-            this.state.api.map(obj => {
-              return <Pagination page={obj.id} id={obj.id} />
+            this.state.api.map((obj,index) => {
+              let maxLength = this.state.api.length / 10
+              if(maxLength > index) {
+                return <button className={this.state.page === index+1? 'active-pagination':null} onClick={()=> this.nextPage(index+1)}>{index+1}</button>
+              }
             })
           }
-          <a href="#">&raquo;</a>
+          <button href="#"  disabled={this.state.page >= this.state.api.length / 10?true:false}  onClick={() => this.nextPage(this.state.page +1)}>&raquo;</button>
         </div>
 
 

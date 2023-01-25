@@ -180,3 +180,7 @@ code {
         background-color: transparent;
         cursor: default;
       }
+      .active-pagination{
+        border: 1px solid red
+
+      }
